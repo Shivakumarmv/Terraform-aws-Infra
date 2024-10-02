@@ -4,23 +4,24 @@ This repository contains Terraform scripts to provision a highly available AWS i
 
 # Features
 
-VPC: A custom VPC with public and private subnets.
-Subnets: Two public subnets and one private subnet.
-NAT Gateway: Ensures internet connectivity for private instances.
-Security Groups: Security groups for EC2 and ALB with proper ingress and egress rules.
-Application Load Balancer: Public-facing ALB to distribute traffic to private EC2 instances.
-EC2 Instances: Two EC2 instances, one in a public subnet and another in a private subnet.
-Auto-provisioning Apache Web Server: User data script installs and configures Apache web server on the private EC2 instance.
+- VPC: A custom VPC with public and private subnets.
+- Subnets: Two public subnets and one private subnet.
+- NAT Gateway: Ensures internet connectivity for private instances.
+- Security Groups: Security groups for EC2 and ALB with proper ingress and egress rules.
+- Application Load Balancer: Public-facing ALB to distribute traffic to private EC2 instances.
+- EC2 Instances: Two EC2 instances, one in a public subnet and another in a private subnet.
+- Auto-provisioning Apache Web Server: User data script installs and configures Apache web server on the private EC2 instance.
 
 # Prerequisites
 
 1.AWS CLI configured with proper access.
 
 2.Terraform installation (Amazon-Linux) or Follow Documentation.
+```bash 
  sudo yum install -y yum-utils shadow-utils
  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
  sudo yum -y install terraform
-
+```
 3.An AWS account.
 
 ## Usage:
@@ -34,6 +35,7 @@ A remote backend stores the Terraform state file outside of your local file syst
 2.Configure Remote Backend in Terraform:
 
 # In your Terraform configuration file (e.g., main.tf), define the remote backend.
+```terraform
 terraform {
   backend "s3" {
     bucket         = "your-terraform-state-bucket"
@@ -42,14 +44,17 @@ terraform {
     encrypt        = true
   }
 }
-
+```
 
 # Clone the Repository:
+``` 
   git clone https://github.com/Shivakumarmv/Terraform-aws-Infra.git
 
+```
 # Modify Variables
 Update the terraform.tfvars file with your desired AMI ID and instance type:
 
+```bash
 ami_id        = "ami-0ebfd941bbafe70c6" # Replace actual imageid
 instance_type = "t2.micro" # Replace based on requirement
 #Subnet IDs in two availability zones (replace with your actual subnet IDs)
@@ -57,22 +62,22 @@ subnet_id = {
   "us-east-1a" = "subnet-0520b3fe7e4f7c7b2" 
   "us-east-1b" = "subnet-0637df48487e564b0"
 }
-
+```
 # Terraform cmd:
-
+```terraform
 terraform init
 terraform validate
 terraform plan
 terraform apply
 
-
+```
 # Verify the Deployment:
  
 Copy loadbalancer DNS name and paste in browser
 
 # Clean Up
 To destroy the infrastructure and release AWS resources:
-
+```terraform
 terraform destroy 
 
-
+```
