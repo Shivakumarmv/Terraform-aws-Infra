@@ -14,15 +14,14 @@ Auto-provisioning Apache Web Server: User data script installs and configures Ap
 
 # Prerequisites
 
-AWS CLI configured with proper access.
+1.AWS CLI configured with proper access.
 
-Terraform installation (Amazon-Linux) or Follow Documentation.
+2.Terraform installation (Amazon-Linux) or Follow Documentation.
  sudo yum install -y yum-utils shadow-utils
  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
  sudo yum -y install terraform
 
-An AWS account.
-
+3.An AWS account.
 
 Usage:
 
@@ -46,7 +45,7 @@ terraform {
 
 
 # Clone the Repository:
-
+  git clone https://github.com/Shivakumarmv/Terraform-aws-Infra.git
 
 # Modify Variables
 Update the terraform.tfvars file with your desired AMI ID and instance type:
