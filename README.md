@@ -23,7 +23,7 @@ Auto-provisioning Apache Web Server: User data script installs and configures Ap
 
 3.An AWS account.
 
-Usage:
+## Usage:
 
 ## S3 Bucket for Terraform State
 
@@ -52,7 +52,7 @@ Update the terraform.tfvars file with your desired AMI ID and instance type:
 
 ami_id        = "ami-0ebfd941bbafe70c6" # Replace actual imageid
 instance_type = "t2.micro" # Replace based on requirement
-# Subnet IDs in two availability zones (replace with your actual subnet IDs)
+#Subnet IDs in two availability zones (replace with your actual subnet IDs)
 subnet_id = {
   "us-east-1a" = "subnet-0520b3fe7e4f7c7b2" 
   "us-east-1b" = "subnet-0637df48487e564b0"
